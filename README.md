@@ -1,7 +1,8 @@
 # sandbox-es2015
 
-refs:
+ref:
 https://css-tricks.com/lets-learn-es2015
+
 
 ## let-and-const.js
 
@@ -25,6 +26,7 @@ try {
 }
 ```
 
+
 ## template-literals.js
 
 [template-literals.js](src/template-literals.js)
@@ -41,6 +43,7 @@ const markup = `
 </div>
 `
 ```
+
 
 ## arrow-functions.js
 
@@ -64,9 +67,10 @@ const eight = () => 3 + 5
 const eight = _ => 3 + 5
 ```
 
+
 ## spread parameters.js
 
-[spread parameters.js](src/spread parameters.js)
+[spread-parameters.js](src/spread-parameters.js)
 
 * `...array` で、Array のそれぞれの値をカンマ区切りで表現することを意味する。
 
@@ -77,7 +81,6 @@ console.log(Math.max(...numbers))  // -> 50
 
 ```
 
-
 * そのため、Array 同士の結合も簡単
 
 ```
@@ -86,3 +89,19 @@ let numbers2 = [21, 24]
 console.log([...numbers1, ...numbers2]) // -> [ 1, 13, 21, 24 ]
 ```
 
+
+## rest parameters.js
+
+[rest-parameters.js](src/rest-parameters.js)
+
+* `...Array`　を受け取る関数も次のように定義可能。 
+
+```
+let numbers = [2, 4, 20]
+const plusTwo = (...numbers) => {
+  numbers.forEach(v => {
+    console.log(v + 2)
+  })
+}
+plusTwo(...numbers) // -> 4 6 22
+```
