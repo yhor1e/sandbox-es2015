@@ -64,3 +64,25 @@ const eight = () => 3 + 5
 const eight = _ => 3 + 5
 ```
 
+## spread parameters.js
+
+[spread parameters.js](src/spread parameters.js)
+
+* `...array` で、Array のそれぞれの値をカンマ区切りで表現することを意味する。
+
+
+```
+let numbers = [2, 4, 20, 43, 50, 23]
+console.log(Math.max(...numbers))  // -> 50
+
+```
+
+
+* そのため、Array 同士の結合も簡単
+
+```
+let numbers1 = [1, 13]
+let numbers2 = [21, 24]
+console.log([...numbers1, ...numbers2]) // -> [ 1, 13, 21, 24 ]
+```
+
