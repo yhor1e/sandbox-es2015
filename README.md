@@ -40,6 +40,27 @@ const markup = `
   <h2>${name}</h2>
 </div>
 `
+```
 
+## arrow-functions.js
+
+[arrow-functions.js](src/arrow-functions.js)
+
+* return は {} を使用し明示することも可能。次はどちらの定義方法も同じ関数である。
+
+```
+const add = (a, b) => {
+  return a + b
+}
+
+const add = (a, b) => a + b
+```
+
+
+* 引数をとらない関数は `()` もしくは ` _` を使用し定義する。次はどちらの定義方法も同じ関数である。
+
+```
+const eight = () => 3 + 5
+const eight = _ => 3 + 5
 ```
 
