@@ -25,3 +25,21 @@ try {
 }
 ```
 
+## template-literals.js
+
+[template-literals.js](src/template-literals.js)
+
+* テンプレートはバッククォート　(`` ` ``)　でくくる。
+* バッククォートでくくった場合、`+` 演算子を使用しなくとも改行を含むテンプレートを定義できる。
+
+```
+let name = 'foo'
+
+const markup = `
+<div>
+  <h2>${name}</h2>
+</div>
+`
+
+```
+
