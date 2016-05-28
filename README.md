@@ -4,7 +4,7 @@ ref:
 https://css-tricks.com/lets-learn-es2015
 
 
-## let-and-const.js
+## let and const
 
 [let-and-const.js](src/let-and-const.js)
 
@@ -27,7 +27,7 @@ try {
 ```
 
 
-## template-literals.js
+## template literals
 
 [template-literals.js](src/template-literals.js)
 
@@ -45,7 +45,7 @@ const markup = `
 ```
 
 
-## arrow-functions.js
+## arrow functions
 
 [arrow-functions.js](src/arrow-functions.js)
 
@@ -68,7 +68,7 @@ const eight = _ => 3 + 5
 ```
 
 
-## spread parameters.js
+## spread parameters
 
 [spread-parameters.js](src/spread-parameters.js)
 
@@ -90,7 +90,7 @@ console.log([...numbers1, ...numbers2]) // -> [ 1, 13, 21, 24 ]
 ```
 
 
-## rest parameters.js
+## rest parameters
 
 [rest-parameters.js](src/rest-parameters.js)
 
@@ -104,4 +104,137 @@ const plusTwo = (...numbers) => {
   })
 }
 plusTwo(...numbers) // -> 4 6 22
+```
+## assifnment destructuring
+
+ref: https://ponyfoo.com/articles/es6#assignment-destructuring
+
+> var {foo} = pony is equivalent to var foo = pony.foo
+
+```
+let foo = {bar: 5}
+let {bar} = foo
+console.log(bar)  // -> 5
+```
+
+> var {foo: baz} = pony is equivalent to var baz = pony.foo
+```
+let foo = {bar: 5}
+let {bar: baz} = foo
+console.log(baz)  // -> 5
+```
+
+> You can provide default values, var {foo='bar'} = baz yields foo: 'bar' if baz.foo is undefined
+```
+let {bar = 'baz'} = foo
+console.log(bar)  // -> 'baz'
+```
+
+```
+let foo = {bar: `a`}
+let {bar = 'baz'} = foo
+console.log(bar)  // -> 'a'
+```
+
+> var {foo, bar: baz} = {foo: 0, bar: 1} gets you foo: 0 and baz: 1
+```
+let {foo, bar: baz} = {foo: 0, bar: 1}
+console.log(foo)  // -> 0
+console.log(baz)  // -> 1
+```
+
+> You can go deeper. var {foo: {bar}} = { foo: { bar: 'baz' } } gets you bar: 'baz'
+```
+let {foo: {bar}} = { foo: { bar: 'baz' } }
+console.log(bar)  // -> 'baz'
+```
+
+> You can alias that too. var {foo: {bar: deep}} = { foo: { bar: 'baz' } } gets you deep: 'baz'
+```
+let {foo: {bar: deep}} = { foo: { bar: 'baz' } }
+console.log(deep)  // ->
+```
+
+> Properties that aren’t found yield undefined as usual, e.g: var {foo} = {}
+```
+let {foo} = {}
+console.log(foo)  // -> undefined
+```
+
+> Deeply nested properties that aren’t found yield an error, e.g: var {foo: {bar}} = {}
+
+```
+let {foo: {bar}} = {}
+console.log(bar)  // -> Uncaught TypeError
+```
+
+> It also works for arrays, [a, b] = [0, 1] yields a: 0 and b: 1
+```
+let [a, b, c] = [1, 2, 3]
+console.log(a, b, c)  // -> 1 2 3
+```
+
+> You can skip items in an array, [a, , b] = [0, 1, 2], getting a: 0 and b: 2
+```
+let [a, b, c] = [1,, 3]
+console.log(a, b, c)  // -> 1 undefined 3
+```
+
+> You can swap without an “aux” variable, [a, b] = [b, a]
+```
+let [a, b] = [1, 2]
+console.log(a, b)  // -> 1 2
+[a, b] = [b, a]  // -> Uncaught TypeError
+```
+
+この結果は記事の内容と異なる。
+
+> Assign default values like function foo (bar=2) {}
+```
+(function foo(bar=2){
+  console.log(bar)
+})(4) // -> 4
+
+(function foo(bar=2){
+  console.log(bar)
+})() // -> 2
+
+```
+
+> Those defaults can be objects, too function foo (bar={ a: 1, b: 2 }) {}
+```
+(function foo(bar={a: 1, b: 2}){
+  console.log(bar.a, bar.b)
+})({a: 3, b: 4}) // -> 3 4
+
+(function foo(bar={a: 1, b: 2}){
+  console.log(bar.a, bar.b)
+})() // -> 1 2
+```
+
+> Destructure bar completely, like function foo ({ a=1, b=2 }) {}
+```
+(function foo({a=1, b=2}){
+  console.log(a, b)
+})({a: 3, b: 4}) // -> 3 4
+
+// オブジェクトで引数を定義している場合は、オブジェクトを渡す必要がある。
+(function foo({a=1, b=2}){
+  console.log(a, b)
+})() // -> Uncaught TypeError
+
+(function foo({a=1, b=2}){
+  console.log(a, b)
+})({}) // -> 1 2
+
+```
+
+> Default to an empty object if nothing is provided, like function foo ({ a=1, b=2 } = {}) {}
+```
+// 次のようにしてオブジェクトを引数を指定した場合に、なにも引数を渡さないようにできる。
+(function foo({a=1, b=2} = {}){
+  console.log(a, b)
+})() // -> Uncaught TypeError
+
+VM3253:2 1 2
 ```
