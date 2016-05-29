@@ -250,3 +250,29 @@ console.log(a, b)  // -> 1 2
   console.log(a, b)
 })() // -> 1 2
 ```
+
+## object literals
+
+ref: https://ponyfoo.com/articles/es6#spread-operator-and-rest-parameters
+
+> Computed property names, { [prefix + 'Foo']: 'bar' }, where prefix: 'moz', yields { mozFoo: 'bar' }
+
+```js
+let prefix = 'foo'
+let o = {[prefix + 'baz']: 'bar'}
+console.log(o)  // -> Object {foobaz: "bar"}
+```
+
+> You can’t combine computed property names and property value shorthands, { [foo] } is invalid
+
+```js
+let prefix = 'foo'
+let o = {prefix}
+console.log(o)  // Object {prefix: "foo"}
+```
+
+```js
+let prefix = 'foo'
+let o = {[prefix]}
+console.log(o)  // Uncaught SyntaxError
+```
