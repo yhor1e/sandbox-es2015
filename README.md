@@ -276,3 +276,62 @@ let prefix = 'foo'
 let o = {[prefix]}
 console.log(o)  // Uncaught SyntaxError
 ```
+
+## classes
+
+ref: https://ponyfoo.com/articles/es6#classes
+
+```
+typeof class Foo {}  // -> 'function'
+```
+
+> Syntax similar to declaring objects, class Foo {}
+> Instance methods – new Foo().bar – are declared using the short object literal syntax, class Foo { bar () {} }
+>　Constructor method class Foo { constructor () { /* initialize instance */ } }
+
+```
+let bar = new (class Foo {
+
+  constructor(a) {
+    this.a = a
+  }
+
+  getA() {
+    console.log(this.a)
+  }
+})('bar')
+bar.getA()  // -> 'bar'
+```
+
+> Static methods – Foo.isPonyFoo() – need a static keyword prefix, class Foo { static isPonyFoo () {} }
+
+`static` はどのような場合に使用するのか。
+
+> Prototypal inheritance with a simple syntax class PonyFoo extends Foo {}
+
+```js
+class Foo {
+
+  constructor(a) {
+    this.a = a
+  }
+
+  getA() {
+    console.log(this.a)
+  }
+}
+
+class ponyFoo extends Foo {
+  getB(){
+    console.log(this.a)
+  }
+}
+
+let baz = new ponyFoo('baz')
+baz.getA() // -> 'baz'
+baz.getB() // -> 'baz'
+```
+
+## simbol
+
+どのような場面で使用するのか。
