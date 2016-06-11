@@ -1,8 +1,9 @@
 # sandbox-es2015
 
-ref:
-https://css-tricks.com/lets-learn-es2015
-
+refs:
+* https://css-tricks.com/lets-learn-es2015
+* https://ponyfoo.com/articles/es6#assignment-destructuring
+* https://github.com/DrkSephy/es6-cheatsheet
 
 ## let and const
 
@@ -332,6 +333,45 @@ baz.getA() // -> 'baz'
 baz.getB() // -> 'baz'
 ```
 
-## simbol
+## symbol
+
+ref: https://ponyfoo.com/articles/es6#symbols
+
+> You can create your own symbols using var symbol = Symbol()
+
+> Symbols are of type symbol, thus: typeof Symbol() === 'symbol'
+
+```
+let s = Symbol()
+typeof s  // -> 'Symbol'
+```
+
+> You can add a description for debugging purposes, like Symbol('ponyfoo')
+
+```
+let s1 = Symbol()
+console.log(s1)  // -> Symbol()
+
+let s2 = Symbol('foo')
+console.log(s2)  // -> Symbol(foo)
+```
+
+> Symbols are immutable and unique. Symbol(), Symbol(), Symbol('foo') and Symbol('foo') are all different
+
+```
+let s1 = Symbol('foo')
+let s2 = Symbol('foo')
+console.log(s1 === s2)  // -> false
+```
+
+
+
 
 どのような場面で使用するのか。
+
+→メソッドに定義などに使用する。そうすることによって、ネームスペースの強豪が避けられる。
+
+> A Use case for Symbol() is to patch objects or namespaces from third parties with your own logic, but be confident that you won't collide with updates to that library. For example, if you wanted to add a method refreshComponent to the React.Component class, and be certain that you didn't trample a method they add in a later update
+
+ref: https://github.com/DrkSephy/es6-cheatsheet#symbols
+
