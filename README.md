@@ -364,9 +364,6 @@ let s2 = Symbol('foo')
 console.log(s1 === s2)  // -> false
 ```
 
-
-
-
 どのような場面で使用するのか。
 
 →メソッドに定義などに使用する。そうすることによって、ネームスペースの強豪が避けられる。
@@ -375,3 +372,50 @@ console.log(s1 === s2)  // -> false
 
 ref: https://github.com/DrkSephy/es6-cheatsheet#symbols
 
+
+> You can also create global symbols with Symbol.for(key)
+>> If a symbol with the provided key already existed, you get that one back
+>> Otherwise, a new symbol is created, using key as its description as well
+
+
+```js
+let a = Symbol.for('foo')
+let b = Symbol.for('foo')
+a === b // true
+```
+
+>> Symbol.keyFor(symbol) is the inverse function, taking a symbol and returning its key
+
+>> Global symbols are as global as it gets, or cross-realm. Single registry used to look up these symbols across the runtime
+
+>>> window context
+>>> eval context
+>>> <iframe> context, Symbol.for('foo') === iframe.contentWindow.Symbol.for('foo')
+
+```js
+let a = Symbol.for('foo')
+Symbol.keyFor(a)  // 'foo'
+window.Symbol.keyFor(a)  // 'foo'
+```
+
+> There’s also “well-known” symbols
+>> Not on the global registry, accessible through Symbol[name], e.g: Symbol.iterator
+>> Cross-realm, meaning Symbol.iterator === iframe.contentWindow.Symbol.iterator
+>> Used by specification to define protocols, such as the iterable protocol over Symbol.iterator
+>> They’re not actually well-known – in colloquial terms
+
+* イテレータとはなにか。
+
+ref: http://qiita.com/kura07/items/cf168a7ea20e8c2554c6
+
+> イテラブル (Iterable) なオブジェクト
+> イテレータを持つオブジェクト
+> [Symbol.iterator]()
+
+> イテレータ (Iterator)
+> 順番にイテレータリザルトを取り出すことのできるオブジェクト
+> .next()
+
+> イテレータリザルト (Iterator Result)
+> 取り出した値や、取り出し終えたかどうかの真偽値を持つオブジェクト
+> .value, .done
