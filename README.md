@@ -390,7 +390,7 @@ a === b // true
 
 >>> window context
 >>> eval context
->>> <iframe> context, Symbol.for('foo') === iframe.contentWindow.Symbol.for('foo')
+>>> iframe context, Symbol.for('foo') === iframe.contentWindow.Symbol.for('foo')
 
 ```js
 let a = Symbol.for('foo')
@@ -408,18 +408,23 @@ window.Symbol.keyFor(a)  // 'foo'
 
 * イテレータとはなにか。
 
-
 ref: http://qiita.com/kura07/items/cf168a7ea20e8c2554c6
 
 
 > イテラブル (Iterable) なオブジェクト  
-> イテレータを持つオブジェクト  
+> イテレータを持つオブジェクト
+> ```
 > [Symbol.iterator]()  
+> ```
 
 > イテレータ (Iterator)  
 > 順番にイテレータリザルトを取り出すことのできるオブジェクト  
+> ```
 > .next()  
+> ```
 
 > イテレータリザルト (Iterator Result)
 > 取り出した値や、取り出し終えたかどうかの真偽値を持つオブジェクト
-> .value, .done
+```
+.value, .done
+ ```
