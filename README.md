@@ -405,7 +405,6 @@ window.Symbol.keyFor(a)  // 'foo'
 >> Used by specification to define protocols, such as the iterable protocol over Symbol.iterator
 >> They’re not actually well-known – in colloquial terms
 
-
 * イテレータとはなにか。
 
 ref: http://qiita.com/kura07/items/cf168a7ea20e8c2554c6
@@ -428,3 +427,31 @@ ref: http://qiita.com/kura07/items/cf168a7ea20e8c2554c6
 ```
 .value, .done
  ```
+
+* Symbol.iterator は、イテレータメソッドを定義するために使用する模様。
+
+> Symbols are accessible through Object.getOwnPropertySymbols
+
+？
+
+
+## iterator, generator
+
+iterator の定義は次の通り
+
+>　The iterable is a method that returns an iterator object that has a next method
+>>　The next method returns objects with two properties, value and done
+>>　The value property indicates the current value in the sequence being iterated
+>>　The done property indicates whether there are any more items to iterate
+>>　Objects that have a [Symbol.iterator] value are iterable, because they subscribe to the iterable protocol
+
+ビルトインのイテラブルオブジェクトは
+
+*　array
+
+など
+
+[...array] といった表現で使用できるのがポイントの模様。
+
+generator を使用することで、イテラブルオブジェクトに必要な next メソッドをシンプルに実装することができる。
+　
